@@ -1,0 +1,35 @@
+{
+  "port" : 1338,
+  "security" :{
+    "tokenLife" : 3600
+  },
+  "mongoose" : {
+    "uri" : "mongodb://localhost/gogame_test"
+  },
+  "cloudinary" : {
+    "cloud_name" : "dkhl2i9xu",
+    "api_key": "771858782991363",
+    "api_secret" : "6mmYZvJ5pKRusr5boyZXj00cPgU"
+  },
+  "default" : {
+    "api" : {
+      "version" : "v0.2"
+    },
+    "client" : {
+      "name" : "android",
+      "clientId" : "android",
+      "clientSecret": "clientSecretMustBeHere"
+    },
+    "user" : {
+      "username" : "apiuser",
+      "password" : "password"
+    }
+  },
+  "auth": {
+    "vkontakte": {
+      "clientID": "5138029",
+      "clientSecret": "Tdh48S1bV2qWWDTpE7rY",
+      "callbackURL": "http://192.168.0.101:1338/api/auth/vkontakte/callback"
+    }
+  }
+}
