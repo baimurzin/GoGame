@@ -22,15 +22,26 @@ router.post('/register', function (req, res) {
     var User = new UserModel({
         username: username,
         password: password,
-        email: email
+        email: email,
+        access_token: require('crypto').randomBytes(32).toString('hex')
     });
-    User.save(function (err, user) {
+    UserModel.find({$or:[{username: username},{email: email}] },function (err, user) {
         if (err) {
             console.log(err);
-            res.status(500).json(err);
-        } else {
-            res.status(201).json(user);
         }
-    })
+        else if (user.length == 0) {
+            User.save(function (err, user) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json(err);
+                } else {
+                    res.status(201).json(user);
+                }
+            })
+        } else if (user != 0) {
+            res.status(409).json();
+        }
+    });
+
 });
 module.exports = router;
